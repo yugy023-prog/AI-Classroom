@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Study Assistant</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Hackathon MVP</p>
+      <h1>AI Study Assistant</h1>
+    </div>
+    <nav>
+      <a href="#analyze">Analyze</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#notes">Notes</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Upload. Summarize. Practice.</p>
+        <h2>Turn study material into summaries, topics, diagrams, and questions.</h2>
+        <p>Built from the roadmap as a working website project with a local backend, storage, login, and generated study outputs.</p>
+      </div>
+      <div class="auth-panel" id="authPanel">
+        <h3>Study Account</h3>
+        <p id="authStatus">Create a local account to save notes.</p>
+        <input id="username" autocomplete="username" placeholder="Username">
+        <input id="password" autocomplete="current-password" type="password" placeholder="Password">
+        <div class="button-row">
+          <button id="loginBtn">Log in</button>
+          <button id="registerBtn" class="secondary">Register</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="analyze" class="workspace-grid">
+      <form class="tool-panel" id="analysisForm">
+        <div class="section-title">
+          <p class="eyebrow">PDF analysis</p>
+          <h2>Source Material</h2>
+        </div>
+        <label>
+          Upload PDF or text file
+          <input id="fileInput" type="file" accept=".pdf,.txt,.md">
+        </label>
+        <label>
+          Or paste study text
+          <textarea id="sourceText" rows="10" placeholder="Paste textbook notes, previous-year questions, or a chapter outline..."></textarea>
+        </label>
+        <p id="analysisStatus" class="status-text">Ready to analyze your material.</p>
+        <button type="submit">Analyze Material</button>
+      </form>
+
+      <section class="results-panel">
+        <div class="section-title">
+          <p class="eyebrow">AI-style output</p>
+          <h2 id="resultTitle">Roadmap Demo</h2>
+        </div>
+        <div class="stat-row">
+          <div><strong id="wordCount">0</strong><span>Words</span></div>
+          <div><strong id="topicCount">0</strong><span>Topics</span></div>
+          <div><strong id="questionCount">0</strong><span>Questions</span></div>
+        </div>
+        <h3>Summary</h3>
+        <ul id="summaryList" class="summary-list"></ul>
+        <h3>Important Topics</h3>
+        <div id="topicCloud" class="topic-cloud"></div>
+      </section>
+    </section>
+
+    <section class="diagram-section">
+      <div class="section-title">
+        <p class="eyebrow">Interactive 2D diagram</p>
+        <h2>Concept Map</h2>
+      </div>
+      <canvas id="conceptCanvas" width="900" height="420" aria-label="Concept map"></canvas>
+    </section>
+
+    <section id="quiz" class="split-section">
+      <div>
+        <div class="section-title">
+          <p class="eyebrow">Practice</p>
+          <h2>Generated Quiz</h2>
+        </div>
+        <div id="quizList" class="quiz-list"></div>
+      </div>
+      <form id="noteForm" class="tool-panel">
+        <div class="section-title">
+          <p class="eyebrow">Saved locally</p>
+          <h2>Quick Notes</h2>
+        </div>
+        <input id="noteTitle" placeholder="Note title">
+        <textarea id="noteBody" rows="7" placeholder="Write a quick revision note..."></textarea>
+        <button type="submit">Save Note</button>
+      </form>
+    </section>
+
+    <section id="notes" class="notes-section">
+      <div class="section-title">
+        <p class="eyebrow">Database</p>
+        <h2>Saved Notes</h2>
+      </div>
+      <div id="notesList" class="notes-list"></div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
